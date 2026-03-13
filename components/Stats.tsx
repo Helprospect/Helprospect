@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 
 function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
@@ -37,60 +38,70 @@ const stats = [
   { value: 100, suffix: '%', label: 'Sans engagement', sublabel: 'résiliation libre' },
 ]
 
-const clients = [
+const clients: { name: string; logo: React.ReactNode }[] = [
   {
     name: 'EDF',
-    svg: (
-      <svg viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <text x="0" y="22" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="26" fill="white" letterSpacing="-1">EDF</text>
-      </svg>
+    logo: (
+      <span className="flex items-center gap-0">
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: '22px', color: 'white', letterSpacing: '-1px' }}>EDF</span>
+      </span>
     ),
   },
   {
     name: 'Paritel',
-    svg: (
-      <svg viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <text x="0" y="21" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="20" fill="white" letterSpacing="0.5">paritel</text>
-      </svg>
+    logo: (
+      <span className="flex items-center gap-1.5">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="6" stroke="white" strokeWidth="1.5"/>
+          <path d="M6 8.5 C6 7 7 6 8 6 C9 6 10 7 10 8.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+          <line x1="8" y1="10" x2="8" y2="11.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: '17px', color: 'white' }}>paritel</span>
+      </span>
     ),
   },
   {
     name: 'RDF Paris',
-    svg: (
-      <svg viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <text x="0" y="20" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="17" fill="white" letterSpacing="2">RDF</text>
-        <text x="0" y="28" fontFamily="Syne, sans-serif" fontWeight="400" fontSize="9" fill="white" letterSpacing="3.5">PARIS</text>
-      </svg>
+    logo: (
+      <span className="flex flex-col items-start leading-none gap-0.5">
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: '18px', color: 'white', letterSpacing: '2px' }}>RDF</span>
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 400, fontSize: '8px', color: 'white', letterSpacing: '4px' }}>PARIS</span>
+      </span>
     ),
   },
   {
     name: 'Wing',
-    svg: (
-      <svg viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <path d="M4 8 L16 20 L28 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <text x="34" y="21" fontFamily="Syne, sans-serif" fontWeight="700" fontSize="18" fill="white">Wing</text>
-      </svg>
+    logo: (
+      <span className="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M3 7 L11 15 L19 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '18px', color: 'white' }}>Wing</span>
+      </span>
     ),
   },
   {
     name: 'Generali',
-    svg: (
-      <svg viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <circle cx="12" cy="14" r="10" stroke="white" strokeWidth="1.5"/>
-        <text x="9" y="19" fontFamily="serif" fontWeight="900" fontSize="13" fill="white">G</text>
-        <text x="28" y="21" fontFamily="DM Sans, sans-serif" fontWeight="600" fontSize="17" fill="white" letterSpacing="0.3">Generali</text>
-      </svg>
+    logo: (
+      <span className="flex items-center gap-2">
+        <span className="flex items-center justify-center w-7 h-7 rounded-full border border-white" style={{ borderWidth: '1.5px' }}>
+          <span style={{ fontFamily: 'Georgia, serif', fontWeight: 900, fontSize: '14px', color: 'white', lineHeight: 1 }}>G</span>
+        </span>
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: '17px', color: 'white' }}>Generali</span>
+      </span>
     ),
   },
   {
     name: 'Toyota MH',
-    svg: (
-      <svg viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <ellipse cx="14" cy="14" rx="13" ry="8" stroke="white" strokeWidth="1.5" fill="none"/>
-        <ellipse cx="14" cy="14" rx="7" ry="8" stroke="white" strokeWidth="1.5" fill="none"/>
-        <ellipse cx="14" cy="14" rx="13" ry="4" stroke="white" strokeWidth="1.5" fill="none"/>
-        <text x="33" y="21" fontFamily="Syne, sans-serif" fontWeight="700" fontSize="13" fill="white" letterSpacing="0.5">TOYOTA MH</text>
-      </svg>
+    logo: (
+      <span className="flex items-center gap-2">
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none">
+          <ellipse cx="14" cy="10" rx="13" ry="6" stroke="white" strokeWidth="1.3" fill="none"/>
+          <ellipse cx="14" cy="10" rx="6.5" ry="6" stroke="white" strokeWidth="1.3" fill="none"/>
+          <ellipse cx="14" cy="10" rx="13" ry="2.5" stroke="white" strokeWidth="1.3" fill="none"/>
+        </svg>
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '13px', color: 'white', letterSpacing: '0.5px' }}>TOYOTA MH</span>
+      </span>
     ),
   },
 ]
@@ -130,7 +141,7 @@ export default function Stats() {
               className="flex items-center justify-center opacity-40 hover:opacity-70 transition-opacity duration-300"
               title={client.name}
             >
-              {client.svg}
+              {client.logo}
             </div>
           ))}
         </div>
