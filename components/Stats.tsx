@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState<number | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
   const started = useRef(false)
 
@@ -11,22 +11,23 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
       if (entry.isIntersecting && !started.current) {
         started.current = true
         let start = 0
-        const duration = 1500
+        const duration = 1800
         const step = (timestamp: number) => {
           if (!start) start = timestamp
           const progress = Math.min((timestamp - start) / duration, 1)
-          setCount(Math.floor(progress * end))
+          const eased = 1 - Math.pow(1 - progress, 3)
+          setCount(Math.floor(eased * end))
           if (progress < 1) requestAnimationFrame(step)
           else setCount(end)
         }
         requestAnimationFrame(step)
       }
-    }, { threshold: 0.5 })
+    }, { threshold: 0.3 })
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [end])
 
-  return <span ref={ref}>{count}{suffix}</span>
+  return <span ref={ref}>{count === null ? '—' : `${count}${suffix}`}</span>
 }
 
 const stats = [
@@ -37,12 +38,61 @@ const stats = [
 ]
 
 const clients = [
-  { name: 'Paritel', initial: 'P' },
-  { name: 'Client B', initial: 'B' },
-  { name: 'Client C', initial: 'C' },
-  { name: 'Client D', initial: 'D' },
-  { name: 'Client E', initial: 'E' },
-  { name: 'Client F', initial: 'F' },
+  {
+    name: 'EDF',
+    svg: (
+      <svg viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="22" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="26" fill="white" letterSpacing="-1">EDF</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Paritel',
+    svg: (
+      <svg viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="21" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="20" fill="white" letterSpacing="0.5">paritel</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'RDF Paris',
+    svg: (
+      <svg viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="20" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="17" fill="white" letterSpacing="2">RDF</text>
+        <text x="0" y="28" fontFamily="Syne, sans-serif" fontWeight="400" fontSize="9" fill="white" letterSpacing="3.5">PARIS</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Wing',
+    svg: (
+      <svg viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <path d="M4 8 L16 20 L28 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <text x="34" y="21" fontFamily="Syne, sans-serif" fontWeight="700" fontSize="18" fill="white">Wing</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Generali',
+    svg: (
+      <svg viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <circle cx="12" cy="14" r="10" stroke="white" strokeWidth="1.5"/>
+        <text x="9" y="19" fontFamily="serif" fontWeight="900" fontSize="13" fill="white">G</text>
+        <text x="28" y="21" fontFamily="DM Sans, sans-serif" fontWeight="600" fontSize="17" fill="white" letterSpacing="0.3">Generali</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Toyota MH',
+    svg: (
+      <svg viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <ellipse cx="14" cy="14" rx="13" ry="8" stroke="white" strokeWidth="1.5" fill="none"/>
+        <ellipse cx="14" cy="14" rx="7" ry="8" stroke="white" strokeWidth="1.5" fill="none"/>
+        <ellipse cx="14" cy="14" rx="13" ry="4" stroke="white" strokeWidth="1.5" fill="none"/>
+        <text x="33" y="21" fontFamily="Syne, sans-serif" fontWeight="700" fontSize="13" fill="white" letterSpacing="0.5">TOYOTA MH</text>
+      </svg>
+    ),
+  },
 ]
 
 export default function Stats() {
@@ -73,14 +123,14 @@ export default function Stats() {
             Ils nous font confiance
           </p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-6 opacity-50">
+        <div className="flex flex-wrap items-center justify-center gap-10">
           {clients.map((client, i) => (
             <div
               key={i}
-              className="flex items-center justify-center w-28 h-10 border border-[#222] rounded-lg text-[#666] text-sm font-bold"
-              style={{ fontFamily: 'Syne, sans-serif' }}
+              className="flex items-center justify-center opacity-40 hover:opacity-70 transition-opacity duration-300"
+              title={client.name}
             >
-              {client.name}
+              {client.svg}
             </div>
           ))}
         </div>
