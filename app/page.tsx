@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Stats from '@/components/Stats'
+import Offre from '@/components/Offre'
 import Methode from '@/components/Methode'
 import Results from '@/components/Results'
 import Secteurs from '@/components/Secteurs'
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
+        <Offre />
         <Methode />
         <Results />
         <Secteurs />

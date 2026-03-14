@@ -37,19 +37,18 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: text */}
           <div ref={heroRef} className="animate-on-scroll">
-            <div className="section-label mb-8">Agence de prospection B2B</div>
+            <div className="section-label mb-8">Agence de génération de leads B2B &amp; B2C</div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>
-              Nous{' '}
-              <span className="text-gradient">prospectons.</span>
+              Vos leads{' '}
+              <span className="text-gradient">qualifiés,</span>
               <br />
-              Vous,{' '}
-              <span className="text-[#888]">vous vendez.</span>
+              <span className="text-[#888]">maintenant.</span>
             </h1>
 
             <p className="text-lg text-[#888] leading-relaxed mb-10 max-w-lg" style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
-              Helprospect génère vos leads B2B qualifiés par téléprospection, cold email et LinkedIn.{' '}
-              <strong className="text-[#CCC] font-medium">Premiers résultats en 72h.</strong> Sans engagement.
+              Helprospect génère vos leads B2B et B2C — téléprospection, cold email, ads et newsletters.{' '}
+              <strong className="text-[#CCC] font-medium">100% au résultat.</strong> Vous payez uniquement les leads reçus.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-14">
@@ -125,15 +124,15 @@ export default function Hero() {
             <div
               className="absolute -right-6 bottom-24 bg-[#111] border border-[#222] rounded-xl p-4 shadow-2xl"
             >
-              <div className="text-2xl font-black text-[#F5C518]" style={{ fontFamily: 'Syne, sans-serif' }}>3</div>
-              <div className="text-xs text-[#666] mt-0.5">Canaux d'acquisition</div>
+              <div className="text-2xl font-black text-[#F5C518]" style={{ fontFamily: 'Syne, sans-serif' }}>B2B+B2C</div>
+              <div className="text-xs text-[#666] mt-0.5">Multi-marché</div>
             </div>
 
             <div
               className="absolute left-6 -bottom-5 bg-[#F5C518] rounded-xl p-4 shadow-2xl"
             >
-              <div className="text-2xl font-black text-[#0A0A0A]" style={{ fontFamily: 'Syne, sans-serif' }}>Sans</div>
-              <div className="text-xs text-[#0A0A0A] font-semibold mt-0.5">engagement</div>
+              <div className="text-2xl font-black text-[#0A0A0A]" style={{ fontFamily: 'Syne, sans-serif' }}>100%</div>
+              <div className="text-xs text-[#0A0A0A] font-semibold mt-0.5">au résultat</div>
             </div>
           </div>
         </div>
@@ -146,14 +145,14 @@ export default function Hero() {
             {[...Array(2)].map((_, repeat) => (
               <div key={repeat} className="inline-flex items-center">
                 {[
-                  'Génération de leads B2B',
+                  'Génération de leads B2B & B2C',
                   'Téléprospection',
                   'Cold Email',
-                  'LinkedIn Outreach',
-                  'Leads qualifiés',
-                  'Sans engagement',
+                  'Ads & Newsletters',
+                  'Leads requalifiés',
+                  '100% au résultat',
                   'Résultats en 72h',
-                  'Prospection multicanale',
+                  'Vous payez par lead reçu',
                 ].map((text, i) => (
                   <span key={i} className="inline-flex items-center gap-4 px-8">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] flex-shrink-0" />

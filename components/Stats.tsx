@@ -32,10 +32,10 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
 }
 
 const stats = [
-  { value: 10, suffix: '+', label: 'Clients accompagnés', sublabel: 'en France' },
-  { value: 72, suffix: 'h', label: 'Pour les premiers leads', sublabel: 'dès le démarrage' },
-  { value: 3, suffix: '', label: 'Canaux d\'acquisition', sublabel: 'Call · Email · LinkedIn' },
-  { value: 100, suffix: '%', label: 'Sans engagement', sublabel: 'résiliation libre' },
+  { value: 10, suffix: '+', label: 'Clients accompagnés', sublabel: 'B2B & B2C confondus' },
+  { value: 72, suffix: 'h', label: 'Premiers leads livrés', sublabel: 'dès le démarrage' },
+  { value: 100, suffix: '%', label: 'Au résultat', sublabel: 'Vous payez par lead reçu' },
+  { value: 0, suffix: '€', label: 'Abonnement', sublabel: 'Zéro frais fixes' },
 ]
 
 const clients: { name: string; logo: React.ReactNode }[] = [

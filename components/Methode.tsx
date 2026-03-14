@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react'
 const steps = [
   {
     num: '01',
-    title: 'Ciblage',
-    desc: 'On définit ensemble votre ICP (profil client idéal) — secteur, taille entreprise, poste décisionnaire. On construit la liste de prospects avec Sales Navigator et nos bases propriétaires.',
+    title: 'Cadrage',
+    desc: 'On définit ensemble votre cible idéale — B2B (secteur, poste, taille) ou B2C (âge, géo, intention). On choisit les canaux adaptés et on construit la stratégie avant de prospecter.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
@@ -14,28 +14,28 @@ const steps = [
   },
   {
     num: '02',
-    title: 'Copywriting',
-    desc: 'Nos rédacteurs spécialisés B2B créent des séquences de messages percutantes — cold emails personnalisés, scripts d\'appel, messages LinkedIn. Zéro template générique.',
+    title: 'Activation',
+    desc: 'Nos équipes activent les leviers retenus : cold call, cold email, LinkedIn en B2B — ads Meta/Google, insertion newsletter en B2C. Tout est opéré par des humains, pas des bots.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
       </svg>
     ),
   },
   {
     num: '03',
-    title: 'Prospection',
-    desc: 'On prospecte en votre nom sur 3 canaux simultanément : téléphone, cold email, LinkedIn. Notre équipe gère tout — relances, objections, qualification initiale.',
+    title: 'Requalification',
+    desc: 'Chaque lead généré est requalifié par notre équipe avant transmission. On vérifie l\'intention, le besoin et la disponibilité. Vous ne recevez que des contacts réellement prêts.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        <path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
       </svg>
     ),
   },
   {
     num: '04',
-    title: 'Livraison',
-    desc: 'Vous recevez des rendez-vous qualifiés directement dans votre agenda. Reporting hebdomadaire, accès au dashboard temps réel, intégration CRM. Vous fermez les deals, on s\'occupe du reste.',
+    title: 'Livraison & facturation',
+    desc: 'Vous recevez vos leads directement — RDV agenda en B2B, fiche contact qualifiée en B2C. Vous êtes facturé uniquement sur les leads livrés. Reporting temps réel inclus.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <polyline points="20 6 9 17 4 12"/>
@@ -67,12 +67,12 @@ export default function Methode() {
               className="text-4xl lg:text-5xl font-black leading-tight mb-6"
               style={{ fontFamily: 'Syne, sans-serif' }}
             >
-              De la cible au
+              Du contact au
               <br />
-              <span className="text-gradient">rendez-vous.</span>
+              <span className="text-gradient">lead livré.</span>
             </h2>
             <p className="text-[#666] text-base leading-relaxed mb-8">
-              Une machine de prospection complète, opérée par des humains. Pas un bot, pas un outil SaaS — une vraie équipe dédiée à votre acquisition.
+              B2B ou B2C, notre process est le même : cibler, activer, requalifier, livrer. Opéré par des humains. Facturé au résultat.
             </p>
             <a
               href="https://calendly.com/helprospect/30min"
