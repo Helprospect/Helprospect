@@ -142,19 +142,15 @@ export default function Stats() {
             style={{ background: 'linear-gradient(to left, #0A0A0A, transparent)' }} />
 
           <div className="ticker-wrap">
-            <div className="ticker-content" style={{ animation: 'ticker 30s linear infinite' }}>
-              {/* First set */}
-              {clients.map((client, i) => (
-                <div key={`a-${i}`} className="inline-flex items-center mx-10 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default" title={client.name}>
-                  {client.logo}
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {clients.map((client, i) => (
-                <div key={`b-${i}`} className="inline-flex items-center mx-10 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default" title={client.name}>
-                  {client.logo}
-                </div>
-              ))}
+            <div className="ticker-content" style={{ animation: 'ticker 40s linear infinite' }}>
+              {/* 4 sets pour éviter tout vide à l'écran */}
+              {['a','b','c','d'].flatMap((key) =>
+                clients.map((client, i) => (
+                  <div key={`${key}-${i}`} className="inline-flex items-center mx-12 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default" title={client.name}>
+                    {client.logo}
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
