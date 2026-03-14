@@ -127,23 +127,36 @@ export default function Stats() {
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Clients logos */}
-        <div className="text-center mb-10">
-          <p className="text-xs text-[#444] uppercase tracking-widest" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 600 }}>
-            Ils nous font confiance
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-10">
-          {clients.map((client, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center opacity-40 hover:opacity-70 transition-opacity duration-300"
-              title={client.name}
-            >
-              {client.logo}
+      {/* Clients logo marquee — full width */}
+      <div className="mt-16">
+        <p className="text-center text-xs text-[#444] uppercase tracking-widest mb-8" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 600 }}>
+          Ils nous font confiance
+        </p>
+        {/* Fade masks on edges */}
+        <div className="relative">
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10"
+            style={{ background: 'linear-gradient(to right, #0A0A0A, transparent)' }} />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10"
+            style={{ background: 'linear-gradient(to left, #0A0A0A, transparent)' }} />
+
+          <div className="ticker-wrap">
+            <div className="ticker-content" style={{ animation: 'ticker 30s linear infinite' }}>
+              {/* First set */}
+              {clients.map((client, i) => (
+                <div key={`a-${i}`} className="inline-flex items-center mx-10 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default" title={client.name}>
+                  {client.logo}
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {clients.map((client, i) => (
+                <div key={`b-${i}`} className="inline-flex items-center mx-10 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default" title={client.name}>
+                  {client.logo}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
