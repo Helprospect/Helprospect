@@ -43,7 +43,7 @@ export default function Hero() {
               Vos leads{' '}
               <span className="text-gradient">qualifiés,</span>
               <br />
-              <span className="text-[#888]">maintenant.</span>
+              <span className="text-[#888]">now.</span>
             </h1>
 
             <p className="text-lg text-[#888] leading-relaxed mb-10 max-w-lg" style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
