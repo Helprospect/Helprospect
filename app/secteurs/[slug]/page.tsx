@@ -96,8 +96,9 @@ export async function generateStaticParams() {
   return Object.keys(secteurs).map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const s = secteurs[params.slug]
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const s = secteurs[slug]
   if (!s) return {}
   return {
     title: `${s.title} – Helprospect`,
@@ -106,8 +107,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function SecteurPage({ params }: { params: { slug: string } }) {
-  const s = secteurs[params.slug]
+export default async function SecteurPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const s = secteurs[slug]
   if (!s) notFound()
 
   return (
