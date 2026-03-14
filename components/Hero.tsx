@@ -39,7 +39,7 @@ export default function Hero() {
           <div ref={heroRef} className="animate-on-scroll">
             <div className="section-label mb-8">Agence de génération de leads B2B &amp; B2C</div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <h1 className="font-black leading-[0.95] tracking-tight mb-8" style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(2rem, 8vw, 4.5rem)' }}>
               Vos leads{' '}
               <span className="text-gradient">qualifiés,</span>
               <br />

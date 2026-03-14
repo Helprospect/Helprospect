@@ -87,6 +87,9 @@ body::before {
   transform: translateY(-3px);
 }
 
+/* Fix: Tailwind hidden doit primer sur display inline-flex */
+.hidden { display: none !important; }
+
 /* CTA button */
 .btn-primary {
   background: #F5C518;
